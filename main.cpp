@@ -16,15 +16,15 @@ string addBase(const string& firstNum, const string& secondNum, int base) {
   int j = secondNum.length() - 1;
 
   while (i >= 0 || j >= 0 || carry) {
-    int firstDight = i >= 0 ? firstNum[i--] - '0' : 0;
-    int secondDight = j >= 0 ? secondNum[j--] - '0' : 0;
-    int sum = firstDight + secondDight + carry;
+    int firstDigit = i >= 0 ? firstNum[i--] - '0' : 0;
+    int secondDigit = j >= 0 ? secondNum[j--] - '0' : 0;
+    int sum = firstDigit + secondDigit + carry;
     result += (sum % base) + '0';
     carry = sum / base;
   }
   reverse(result.begin(), result.end());
   if (result.empty()) {
-     return "0";
+        return "0";  // Return "0" instead of an empty string when there's no input.
   }
   return result;
 }
@@ -80,14 +80,14 @@ string multKaratsuba(string x, string y, int base) {
   return addBase(addBase(a, m, base), b, base);
 }
 int main() {
-  string I1, I2;
+  string N1, N2;
   int B;
 
   cout << "Enter two numbers and the base (for example: 110 112 10): ";
-  cin >> I1 >> I2 >> B;
+  cin >> N1 >> N2 >> B;
 
-  string sum = addBase(I1, I2, B);
-  string product = multKaratsuba(I1, I2, B);
+  string sum = addBase(N1, N2, B);
+  string product = multKaratsuba(N1, N2, B);
 
   cout << "Sum: " << sum << " Product: " << product << endl;
 
