@@ -23,6 +23,9 @@ string addBase(const string& firstNum, const string& secondNum, int base) {
     carry = sum / base;
   }
   reverse(result.begin(), result.end());
+  if (result.empty()) {
+     return "0";
+  }
   return result;
 }
 
